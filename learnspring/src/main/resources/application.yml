@@ -1,0 +1,4 @@
+database:
+  url: jdbc:postgresql:/localhost:5432/userdb
+  username: postgres
+  password: system
