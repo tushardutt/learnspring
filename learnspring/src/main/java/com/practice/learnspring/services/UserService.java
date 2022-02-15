@@ -30,4 +30,8 @@ public class UserService {
     public User getUser(Long id) {
         return userRepo.findById(id).get();
     }
+
+    public User addUser(User user) {
+        return userRepo.save(user);
+    }
 }

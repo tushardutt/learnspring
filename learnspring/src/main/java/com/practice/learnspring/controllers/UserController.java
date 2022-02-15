@@ -5,6 +5,8 @@ import com.practice.learnspring.services.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,9 +23,14 @@ public class UserController {
         return userService.findPaginatedUser(pageNo,pageSize);
     }
 
-    @GetMapping("users/{id}")
+    @GetMapping("/users/{id}")
     public User getUser(@PathVariable Long id)
     {
         return userService.getUser(id);
+    }
+    @PostMapping("/users")
+    public ResponseEntity<User> addUser(@RequestBody User user){
+        User result = userService.addUser(user);
+        return new ResponseEntity<>(result, HttpStatus.CREATED);
     }
 }
